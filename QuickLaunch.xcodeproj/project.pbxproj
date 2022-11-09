@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		548915CB291B9C3A00DABF29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CA291B9C3A00DABF29 /* AppDelegate.swift */; };
-		548915CD291B9C3A00DABF29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CC291B9C3A00DABF29 /* SceneDelegate.swift */; };
-		548915CF291B9C3A00DABF29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CE291B9C3A00DABF29 /* ViewController.swift */; };
-		548915D2291B9C3A00DABF29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 548915D0291B9C3A00DABF29 /* Main.storyboard */; };
+		548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CE291B9C3A00DABF29 /* ChatListViewController.swift */; };
 		548915D4291B9C3B00DABF29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548915D3291B9C3B00DABF29 /* Assets.xcassets */; };
 		548915D7291B9C3B00DABF29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 548915D5291B9C3B00DABF29 /* LaunchScreen.storyboard */; };
+		548915E5291BA5F400DABF29 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915E4291BA5F400DABF29 /* User.swift */; };
+		548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915EA291BA86E00DABF29 /* UserDTO.swift */; };
+		548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915F0291BADB000DABF29 /* ChatListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		548915C7291B9C3A00DABF29 /* QuickLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548915CA291B9C3A00DABF29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		548915CC291B9C3A00DABF29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		548915CE291B9C3A00DABF29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		548915D1291B9C3A00DABF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		548915CE291B9C3A00DABF29 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		548915D3291B9C3B00DABF29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		548915D6291B9C3B00DABF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		548915D8291B9C3B00DABF29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		548915E4291BA5F400DABF29 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		548915EA291BA86E00DABF29 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		548915F0291BADB000DABF29 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,96 @@
 		548915C9291B9C3A00DABF29 /* QuickLaunch */ = {
 			isa = PBXGroup;
 			children = (
-				548915CA291B9C3A00DABF29 /* AppDelegate.swift */,
-				548915CC291B9C3A00DABF29 /* SceneDelegate.swift */,
-				548915CE291B9C3A00DABF29 /* ViewController.swift */,
-				548915D0291B9C3A00DABF29 /* Main.storyboard */,
+				548915E8291BA85400DABF29 /* Network */,
+				548915E7291BA76200DABF29 /* Core */,
+				548915DF291BA47800DABF29 /* Supporting Files */,
+				548915E6291BA75600DABF29 /* UI */,
 				548915D3291B9C3B00DABF29 /* Assets.xcassets */,
 				548915D5291B9C3B00DABF29 /* LaunchScreen.storyboard */,
 				548915D8291B9C3B00DABF29 /* Info.plist */,
 			);
 			path = QuickLaunch;
+			sourceTree = "<group>";
+		};
+		548915DE291BA46B00DABF29 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				548915CE291B9C3A00DABF29 /* ChatListViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		548915DF291BA47800DABF29 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				548915CA291B9C3A00DABF29 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		548915E0291BA48800DABF29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				548915E4291BA5F400DABF29 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		548915E6291BA75600DABF29 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				548915EC291BA90200DABF29 /* Main Pages */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		548915E7291BA76200DABF29 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				548915E0291BA48800DABF29 /* Models */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		548915E8291BA85400DABF29 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				548915E9291BA85C00DABF29 /* DTOs */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		548915E9291BA85C00DABF29 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				548915EA291BA86E00DABF29 /* UserDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		548915EC291BA90200DABF29 /* Main Pages */ = {
+			isa = PBXGroup;
+			children = (
+				548915ED291BA92000DABF29 /* Chats List Page */,
+			);
+			path = "Main Pages";
+			sourceTree = "<group>";
+		};
+		548915ED291BA92000DABF29 /* Chats List Page */ = {
+			isa = PBXGroup;
+			children = (
+				548915EF291BAD9400DABF29 /* Cells */,
+				548915DE291BA46B00DABF29 /* View Controllers */,
+			);
+			path = "Chats List Page";
+			sourceTree = "<group>";
+		};
+		548915EF291BAD9400DABF29 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				548915F0291BADB000DABF29 /* ChatListCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +210,6 @@
 			files = (
 				548915D7291B9C3B00DABF29 /* LaunchScreen.storyboard in Resources */,
 				548915D4291B9C3B00DABF29 /* Assets.xcassets in Resources */,
-				548915D2291B9C3A00DABF29 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +220,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				548915CF291B9C3A00DABF29 /* ViewController.swift in Sources */,
+				548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */,
+				548915E5291BA5F400DABF29 /* User.swift in Sources */,
+				548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */,
+				548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */,
 				548915CB291B9C3A00DABF29 /* AppDelegate.swift in Sources */,
-				548915CD291B9C3A00DABF29 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		548915D0291B9C3A00DABF29 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				548915D1291B9C3A00DABF29 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		548915D5291B9C3B00DABF29 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +368,8 @@
 				INFOPLIST_FILE = QuickLaunch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,9 +395,8 @@
 				INFOPLIST_FILE = QuickLaunch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
