@@ -16,9 +16,19 @@ final class ChatListCell: UITableViewCell {
     //MARK: - UI Elements -
     
     private var userNameLabel   : UILabel!
-    private var userImageView   : UIImageView!
+    private var userImageButton : UIButton!
     private var userEmailLabel  : UILabel!
     private var statusImageView : UIImageView!
+    private var newMessageView  : UIView!
+    private var newMessageLabel : UILabel!
+    
+    //MARK: - Fields -
+    
+    private var user: User!
+    
+    //MARK: - Callbacks -
+    
+    var onUserImageTapped: ((User) -> Void)?
     
     //MARK: - Initialisation -
     
@@ -27,6 +37,7 @@ final class ChatListCell: UITableViewCell {
         
         configureUserImageView()
         configureUsernameLabel()
+        configureNewMessageView()
     }
     
     @available(*, unavailable)
@@ -39,8 +50,26 @@ final class ChatListCell: UITableViewCell {
 
 extension ChatListCell {
     
-    func setUserData(with user: User) {
+    func setUserData(with user: User, numberOfNewMessages: Int) {
+        self.user = user
         userNameLabel.text = user.fullName
+        
+        if numberOfNewMessages == 0 {
+            newMessageView.isHidden = true
+        } else {
+            newMessageLabel.text = String(numberOfNewMessages)
+            newMessageView.isHidden = false
+        }
+    }
+}
+
+//MARK: - Objective-C Methods -
+
+extension ChatListCell {
+    
+    @objc
+    private func handleShowingUserInfo() {
+        onUserImageTapped?(user)
     }
 }
 
@@ -49,17 +78,23 @@ extension ChatListCell {
 extension ChatListCell {
     
     private func configureUserImageView() {
-        userImageView = UIImageView(image: UIImage(systemName: "person"))
-        
-        userImageView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(userImageView)
+        userImageButton = UIButton()
+        userImageButton.setImage(UIImage(systemName: "person"), for: .normal)
+        userImageButton.addTarget(self, action: #selector(handleShowingUserInfo), for: .touchUpInside)
+        userImageButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(userImageButton)
         
         NSLayoutConstraint.activate([
-            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Paddings.leading),
-            userImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            userImageView.widthAnchor.constraint(equalToConstant: Sizes.userImageSize),
-            userImageView.heightAnchor.constraint(equalToConstant: Sizes.userImageSize)
+            userImageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Paddings.leading),
+            userImageButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            userImageButton.widthAnchor.constraint(equalToConstant: Sizes.userImageSize),
+            userImageButton.heightAnchor.constraint(equalToConstant: Sizes.userImageSize)
         ])
+        
+        userImageButton.layer.cornerRadius = Sizes.userImageSize / 2
+        userImageButton.clipsToBounds = true
+        userImageButton.layer.borderColor = UIColor.gray.cgColor
+        userImageButton.layer.borderWidth = 1
     }
     
     private func configureUsernameLabel() {
@@ -67,8 +102,40 @@ extension ChatListCell {
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(userNameLabel)
         NSLayoutConstraint.activate([
-            userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: Paddings.leading),
+            userNameLabel.leadingAnchor.constraint(equalTo: userImageButton.trailingAnchor, constant: Paddings.leading),
             userNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+    }
+    
+    private func configureNewMessageView() {
+        newMessageView = UIView()
+        newMessageView.translatesAutoresizingMaskIntoConstraints = false
+        newMessageView.backgroundColor = .systemRed
+        newMessageView.isHidden = true
+        contentView.addSubview(newMessageView)
+        NSLayoutConstraint.activate([
+            newMessageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            newMessageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2 * Paddings.trailing),
+            newMessageView.widthAnchor.constraint(equalToConstant: Sizes.newMessageViewSize),
+            newMessageView.heightAnchor.constraint(equalToConstant: Sizes.newMessageViewSize)
+        ])
+        
+        newMessageView.layer.cornerRadius = Sizes.newMessageViewSize / 2
+        newMessageView.clipsToBounds = true
+        
+        newMessageLabel = UILabel()
+        newMessageLabel.font = .systemFont(ofSize: 13)
+        newMessageLabel.textColor = .white
+        newMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        newMessageView.addSubview(newMessageLabel)
+        
+        NSLayoutConstraint.activate([
+//            newMessageLabel.trailingAnchor.constraint(equalTo: newMessageView.trailingAnchor, constant: -0.3 * Paddings.trailing),
+//            newMessageLabel.leadingAnchor.constraint(equalTo: newMessageView.leadingAnchor, constant: 0.3 * Paddings.leading),
+//            newMessageLabel.topAnchor.constraint(equalTo: newMessageView.topAnchor, constant: 0.3 * Paddings.vertical),
+//            newMessageLabel.bottomAnchor.constraint(equalTo: newMessageView.bottomAnchor, constant: -0.3 * Paddings.vertical)
+            newMessageLabel.centerXAnchor.constraint(equalTo: newMessageView.centerXAnchor),
+            newMessageLabel.centerYAnchor.constraint(equalTo: newMessageView.centerYAnchor)
         ])
     }
 }
@@ -80,12 +147,21 @@ extension ChatListCell {
     private enum Paddings {
         
         /// 15
-        static let leading : CGFloat = 15
+        static let leading  : CGFloat = 15
+        
+        /// 15
+        static let trailing : CGFloat = 15
+        
+        /// 15
+        static let vertical : CGFloat = 15
     }
     
     private enum Sizes {
         
-        /// 30
-        static let userImageSize: CGFloat = 30
+        /// 35
+        static let userImageSize        : CGFloat = 35
+        
+        /// 15
+        static let newMessageViewSize   : CGFloat = 20
     }
 }

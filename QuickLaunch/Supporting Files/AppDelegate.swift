@@ -18,9 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = ChatListViewController()
+        window?.rootViewController = configureNavgiationVC()
         
         return true
     }
 }
 
+//MARK: - Private Helpers -
+
+extension AppDelegate {
+    private func configureNavgiationVC() -> UINavigationController {
+        let navVC = UINavigationController(rootViewController: ChatListViewController())
+        navVC.navigationBar.backgroundColor = .systemBlue        
+        return navVC
+    }
+}

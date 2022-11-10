@@ -14,6 +14,8 @@
 		548915E5291BA5F400DABF29 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915E4291BA5F400DABF29 /* User.swift */; };
 		548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915EA291BA86E00DABF29 /* UserDTO.swift */; };
 		548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915F0291BADB000DABF29 /* ChatListCell.swift */; };
+		548F464E291CF2C700A9435E /* ChatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548F464D291CF2C700A9435E /* ChatPageViewController.swift */; };
+		548F4652291CFAC500A9435E /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548F4651291CFAC500A9435E /* UserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		548915E4291BA5F400DABF29 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		548915EA291BA86E00DABF29 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		548915F0291BADB000DABF29 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		548F464D291CF2C700A9435E /* ChatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPageViewController.swift; sourceTree = "<group>"; };
+		548F4651291CFAC500A9435E /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				548915CE291B9C3A00DABF29 /* ChatListViewController.swift */,
+				548F464D291CF2C700A9435E /* ChatPageViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 		548915E6291BA75600DABF29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				548F464F291CFA8B00A9435E /* Auixiliary Views */,
 				548915EC291BA90200DABF29 /* Main Pages */,
 			);
 			path = UI;
@@ -148,6 +154,22 @@
 				548915F0291BADB000DABF29 /* ChatListCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		548F464F291CFA8B00A9435E /* Auixiliary Views */ = {
+			isa = PBXGroup;
+			children = (
+				548F4650291CFA9E00A9435E /* View Controllers */,
+			);
+			path = "Auixiliary Views";
+			sourceTree = "<group>";
+		};
+		548F4650291CFA9E00A9435E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				548F4651291CFAC500A9435E /* UserInfoViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */,
+				548F4652291CFAC500A9435E /* UserInfoViewController.swift in Sources */,
+				548F464E291CF2C700A9435E /* ChatPageViewController.swift in Sources */,
 				548915E5291BA5F400DABF29 /* User.swift in Sources */,
 				548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */,
 				548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */,

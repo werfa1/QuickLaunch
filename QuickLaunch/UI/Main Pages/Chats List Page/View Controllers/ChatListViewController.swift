@@ -45,6 +45,7 @@ extension ChatListViewController {
         view = tableView
         
         configureTableView()
+        navigationController?.title = "Chats"
     }
 }
 
@@ -57,7 +58,11 @@ extension ChatListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.identifier) as! ChatListCell
-        cell.setUserData(with: userList[indexPath.row])
+        cell.setUserData(with: userList[indexPath.row], numberOfNewMessages: indexPath.row)
+        cell.onUserImageTapped = { [weak self] pickedUser in
+            let userInfoVC = UserInfoViewController(pickedUser: pickedUser)
+            self?.present(userInfoVC, animated: true)
+        }
         return cell
     }
 }
@@ -65,9 +70,11 @@ extension ChatListViewController: UITableViewDataSource {
 //MARK: - UITableView Delegate -
 
 extension ChatListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatPageVC = ChatPageViewController(user: userList[indexPath.row])
+        navigationController?.pushViewController(chatPageVC, animated: true)
+    }
 }
-
 
 //MARK: - UI Configuration -
 
@@ -89,7 +96,7 @@ extension ChatListViewController {
     private enum Sizes {
         
         /// 50
-        static let rowHeight: CGFloat = 50
+        static let rowHeight: CGFloat = 70
     }
 }
 
