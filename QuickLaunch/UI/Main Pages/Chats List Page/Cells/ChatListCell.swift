@@ -38,6 +38,7 @@ final class ChatListCell: UITableViewCell {
         configureUserImageView()
         configureUsernameLabel()
         configureNewMessageView()
+        selectionStyle = .default
     }
     
     @available(*, unavailable)

@@ -45,7 +45,17 @@ extension ChatListViewController {
         view = tableView
         
         configureTableView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         navigationController?.title = "Chats"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.title = "chats"
     }
 }
 
