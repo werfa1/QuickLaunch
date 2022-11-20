@@ -51,7 +51,8 @@ extension AppDelegate {
     }
     
     private func configureSettingsVC() -> UINavigationController {
-        let navVC = UINavigationController(rootViewController: SettingsViewController())
+        let currentUser = User(id: 0, name: "Pasha Otverchenko", email: "paulotverchenko@gmail.com", phone: "7(987)654-32-10")
+        let navVC = UINavigationController(rootViewController: SettingsViewController(currentUser: currentUser))
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.backgroundColor = .systemBlue
