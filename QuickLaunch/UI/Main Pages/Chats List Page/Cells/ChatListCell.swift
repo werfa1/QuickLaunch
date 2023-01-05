@@ -53,12 +53,15 @@ extension ChatListCell {
     
     func setUserData(with user: User, numberOfNewMessages: Int) {
         self.user = user
+        userImageButton.setImage(UIImage(named: user.imageName) ?? UIImage(systemName: "person"), for: .normal)
         userNameLabel.text = user.fullName
         
         if numberOfNewMessages == 0 {
             newMessageView.isHidden = true
+            userNameLabel.font = .systemFont(ofSize: 17)
         } else {
             newMessageLabel.text = String(numberOfNewMessages)
+            userNameLabel.font = .boldSystemFont(ofSize: 17)
             newMessageView.isHidden = false
         }
     }
@@ -80,7 +83,7 @@ extension ChatListCell {
     
     private func configureUserImageView() {
         userImageButton = UIButton()
-        userImageButton.setImage(UIImage(systemName: "person"), for: .normal)
+        userImageButton.contentMode = .scaleAspectFill
         userImageButton.addTarget(self, action: #selector(handleShowingUserInfo), for: .touchUpInside)
         userImageButton.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(userImageButton)
@@ -131,10 +134,6 @@ extension ChatListCell {
         newMessageView.addSubview(newMessageLabel)
         
         NSLayoutConstraint.activate([
-//            newMessageLabel.trailingAnchor.constraint(equalTo: newMessageView.trailingAnchor, constant: -0.3 * Paddings.trailing),
-//            newMessageLabel.leadingAnchor.constraint(equalTo: newMessageView.leadingAnchor, constant: 0.3 * Paddings.leading),
-//            newMessageLabel.topAnchor.constraint(equalTo: newMessageView.topAnchor, constant: 0.3 * Paddings.vertical),
-//            newMessageLabel.bottomAnchor.constraint(equalTo: newMessageView.bottomAnchor, constant: -0.3 * Paddings.vertical)
             newMessageLabel.centerXAnchor.constraint(equalTo: newMessageView.centerXAnchor),
             newMessageLabel.centerYAnchor.constraint(equalTo: newMessageView.centerYAnchor)
         ])
@@ -160,7 +159,7 @@ extension ChatListCell {
     private enum Sizes {
         
         /// 35
-        static let userImageSize        : CGFloat = 35
+        static let userImageSize        : CGFloat = 55
         
         /// 15
         static let newMessageViewSize   : CGFloat = 20

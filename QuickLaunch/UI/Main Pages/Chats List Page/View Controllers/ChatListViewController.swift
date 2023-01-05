@@ -73,7 +73,7 @@ extension ChatListViewController {
     }
 }
 
-//MARK: - Private Helpers -
+//MARK: - Fetch Data -
 
 extension ChatListViewController {
     
@@ -86,25 +86,51 @@ extension ChatListViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     if self.userList.count > 0 {
-                        self.tableView.reloadData()
+                        self.updateUI(forLoadedState: .successfullyLoaded)
+                    } else {
+                        self.updateUI(forLoadedState: .zeroData)
                     }
                 }
             } catch {
                 userList = []
-            }
-            // Update UI from the main thread
-            DispatchQueue.main.async { [weak self] in
-                self?.setLoader(forState: .off)
+                DispatchQueue.main.async { [weak self] in
+                    self?.updateUI(forLoadedState: .failed)
+                }
             }
         }
+    }
+}
+
+//MARK: - Objective-C Methods -
+
+extension ChatListViewController {
+    @objc
+    private func handleReloadButtonTap() {
+        UIView.animate(withDuration: 0.3) {
+            self.setReloadButton(forState: .off)
+            self.setLoader(forState: .on)
+        }
+        fetchUserList()
     }
 }
 
 //MARK: - UI Update -
 
 extension ChatListViewController {
-    private func updateUI() {
-        //TODO: error display
+    private func updateUI(forLoadedState state: LoadedState) {
+        if state == .successfullyLoaded {
+            tableView.alpha = 1
+            tableView.reloadData()
+            setLoader(forState: .off)
+            return
+        }
+        
+        let description = state == .failed ? "Failed to fetch users" : "No data to display"
+        let title = description + ".\n" + "Tap to reload"
+        reloadButton.setTitle(title, for: .normal)
+        tableView.alpha = 0
+        setReloadButton(forState: .on)
+        setLoader(forState: .off)
     }
     
     private func setLoader(forState state: SwitchState) {
@@ -121,6 +147,29 @@ extension ChatListViewController {
             }
         }
     }
+    
+    private func setReloadButton(forState state: SwitchState) {
+        switch state {
+        case .on:
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseOut) {
+                    self.reloadButtonTopConstraint.constant = Paddings.reloadButtonVisibleTop
+                    self.reloadButton.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+        case .off:
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseIn) {
+                    self.reloadButton.alpha = 0
+                    self.reloadButtonTopConstraint.constant = Paddings.reloadButtonHiddenTop
+                    self.view.layoutIfNeeded()
+                }
+        }
+    }
 }
 
 //MARK: - UITableView DataSource -
@@ -132,9 +181,15 @@ extension ChatListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.identifier) as! ChatListCell
-        cell.setUserData(with: userList[indexPath.row], numberOfNewMessages: indexPath.row)
+        let user = userList[indexPath.row]
+        user.imageName = "user" + String(indexPath.row)
+        cell.setUserData(
+            with: userList[indexPath.row],
+            numberOfNewMessages: Int.random(in: 0...3))
+        
         cell.onUserImageTapped = { [weak self] pickedUser in
             let userInfoVC = UserInfoViewController(pickedUser: pickedUser)
+            
             self?.present(userInfoVC, animated: true)
         }
         return cell
@@ -184,11 +239,13 @@ extension ChatListViewController {
     private func configureReloadButton() {
         reloadButton = UIButton()
         reloadButton.titleLabel?.numberOfLines = 2
-        reloadButton.titleLabel?.font = .italicSystemFont(ofSize: 16)
-        reloadButton.titleLabel?.textColor = .gray
-        reloadButton.titleLabel?.text = "Failed to load users.\n Tap to reload"
+        reloadButton.titleLabel?.font = .italicSystemFont(ofSize: 18)
+        reloadButton.titleLabel?.textAlignment = .center
+        reloadButton.setTitleColor(.gray, for: .normal)
+        reloadButton.setTitleColor(.lightGray, for: .highlighted)
+        reloadButton.addTarget(self, action: #selector(handleReloadButtonTap), for: .touchUpInside)
         reloadButton.translatesAutoresizingMaskIntoConstraints = false
-        reloadButtonTopConstraint = reloadButton.topAnchor.constraint(equalTo: view.topAnchor, constant: Paddings.reloadButtonHiddenTop)
+        reloadButtonTopConstraint = reloadButton.topAnchor.constraint(equalTo: tableView.topAnchor, constant: Paddings.reloadButtonHiddenTop)
         view.addSubview(reloadButton)
         NSLayoutConstraint.activate([
             reloadButtonTopConstraint,
@@ -205,7 +262,7 @@ extension ChatListViewController {
     private enum Sizes {
         
         /// 70
-        static let rowHeight: CGFloat = 70
+        static let rowHeight  : CGFloat = 90
         
         /// 40
         static let loaderSize : CGFloat = 40
@@ -214,10 +271,10 @@ extension ChatListViewController {
     private enum Paddings {
         
         /// 70
-        static let reloadButtonVisibleTop: CGFloat = 70
+        static let reloadButtonVisibleTop: CGFloat = 200
         
         /// 50
-        static let reloadButtonHiddenTop : CGFloat = 50
+        static let reloadButtonHiddenTop : CGFloat = 130
         
         /// 40
         static let horizontal            : CGFloat = 40

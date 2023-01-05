@@ -30,7 +30,7 @@ extension AppDelegate {
         let navVC = UINavigationController(rootViewController: FeedViewController())
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.backgroundColor = .black
         standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance
@@ -43,7 +43,7 @@ extension AppDelegate {
         let navVC = UINavigationController(rootViewController: ChatListViewController())
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.backgroundColor = .black
         standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance
@@ -57,7 +57,7 @@ extension AppDelegate {
         let navVC = UINavigationController(rootViewController: SettingsViewController(currentUser: currentUser))
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.backgroundColor = .black
         standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance

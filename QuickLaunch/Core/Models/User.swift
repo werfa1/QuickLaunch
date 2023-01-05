@@ -11,10 +11,12 @@ final class User {
     
     //MARK: - Properties -
     
-    let id: Int
-    let fullName: String
-    let email: String
-    let phone: String
+    let id          : Int
+    let fullName    : String
+    let email       : String
+    let phone       : String
+    
+    var imageName   : String
     
     //MARK: - Initialisation -
     
@@ -23,6 +25,7 @@ final class User {
         self.fullName = name
         self.email = email
         self.phone = phone
+        imageName = ""
     }
 }
 
