@@ -31,6 +31,7 @@ extension AppDelegate {
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance
         navVC.tabBarItem.image = UIImage(systemName: "newspaper")
@@ -43,6 +44,7 @@ extension AppDelegate {
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance
         navVC.tabBarItem.image = UIImage(systemName: "message")
@@ -51,11 +53,12 @@ extension AppDelegate {
     }
     
     private func configureSettingsVC() -> UINavigationController {
-        let currentUser = User(id: 0, name: "Pasha Otverchenko", email: "paulotverchenko@gmail.com", phone: "7(987)654-32-10")
+        let currentUser = User(id: 0, name: "Pasha Otverchenko", email: "test.developer@gmail.com", phone: "7(987)654-32-10")
         let navVC = UINavigationController(rootViewController: SettingsViewController(currentUser: currentUser))
         let navBar = navVC.navigationBar
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.backgroundColor = .systemBlue
+        standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance
         navVC.tabBarItem.image = UIImage(systemName: "gear")

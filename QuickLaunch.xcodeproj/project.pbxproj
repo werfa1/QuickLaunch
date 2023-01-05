@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5407195D2966984D00493DBA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407195C2966984D00493DBA /* UserService.swift */; };
+		5407196029669B2D00493DBA /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407195F29669B2D00493DBA /* UserMapper.swift */; };
+		5407196329669B5000493DBA /* MapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407196229669B5000493DBA /* MapperProtocol.swift */; };
 		548915CB291B9C3A00DABF29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CA291B9C3A00DABF29 /* AppDelegate.swift */; };
 		548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548915CE291B9C3A00DABF29 /* ChatListViewController.swift */; };
 		548915D4291B9C3B00DABF29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548915D3291B9C3B00DABF29 /* Assets.xcassets */; };
@@ -19,9 +22,13 @@
 		54A989942924212F00DEF459 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A989932924212F00DEF459 /* FeedViewController.swift */; };
 		54A989962924222E00DEF459 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A989952924222E00DEF459 /* SettingsViewController.swift */; };
 		54A9899929243BF600DEF459 /* PersonalInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9899829243BF600DEF459 /* PersonalInfoCell.swift */; };
+		54C2873D2966AB5D00750512 /* StateEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2873C2966AB5D00750512 /* StateEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5407195C2966984D00493DBA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		5407195F29669B2D00493DBA /* UserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
+		5407196229669B5000493DBA /* MapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperProtocol.swift; sourceTree = "<group>"; };
 		548915C7291B9C3A00DABF29 /* QuickLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548915CA291B9C3A00DABF29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		548915CE291B9C3A00DABF29 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 		54A989932924212F00DEF459 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		54A989952924222E00DEF459 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		54A9899829243BF600DEF459 /* PersonalInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoCell.swift; sourceTree = "<group>"; };
+		54C2873C2966AB5D00750512 /* StateEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5407195B296697BE00493DBA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5407195C2966984D00493DBA /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5407195E29669B1B00493DBA /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				5407195F29669B2D00493DBA /* UserMapper.swift */,
+				5407196229669B5000493DBA /* MapperProtocol.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		548915BE291B9C3A00DABF29 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +141,7 @@
 		548915E7291BA76200DABF29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				54C2873B2966AB4800750512 /* States */,
 				548915E0291BA48800DABF29 /* Models */,
 			);
 			path = Core;
@@ -124,6 +150,8 @@
 		548915E8291BA85400DABF29 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5407195E29669B1B00493DBA /* Mappers */,
+				5407195B296697BE00493DBA /* Services */,
 				548915E9291BA85C00DABF29 /* DTOs */,
 			);
 			path = Network;
@@ -221,6 +249,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		54C2873B2966AB4800750512 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				54C2873C2966AB5D00750512 /* StateEnums.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,12 +330,16 @@
 				548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */,
 				548F4652291CFAC500A9435E /* UserInfoViewController.swift in Sources */,
 				548F464E291CF2C700A9435E /* ChatPageViewController.swift in Sources */,
+				5407196029669B2D00493DBA /* UserMapper.swift in Sources */,
 				548915E5291BA5F400DABF29 /* User.swift in Sources */,
+				5407196329669B5000493DBA /* MapperProtocol.swift in Sources */,
 				548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */,
 				548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */,
+				5407195D2966984D00493DBA /* UserService.swift in Sources */,
 				54A989942924212F00DEF459 /* FeedViewController.swift in Sources */,
 				548915CB291B9C3A00DABF29 /* AppDelegate.swift in Sources */,
 				54A989962924222E00DEF459 /* SettingsViewController.swift in Sources */,
+				54C2873D2966AB5D00750512 /* StateEnums.swift in Sources */,
 				54A9899929243BF600DEF459 /* PersonalInfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

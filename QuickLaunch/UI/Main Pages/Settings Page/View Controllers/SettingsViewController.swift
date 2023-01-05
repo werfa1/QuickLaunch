@@ -39,6 +39,7 @@ extension SettingsViewController {
         
         configureTableView()
         view.backgroundColor = .white
+        title = "Settings"
     }
 }
 

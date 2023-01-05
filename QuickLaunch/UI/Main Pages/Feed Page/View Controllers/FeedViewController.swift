@@ -19,4 +19,9 @@ extension FeedViewController {
         view = UIView()
         view.backgroundColor = .systemGreen
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Feed"
+    }
 }

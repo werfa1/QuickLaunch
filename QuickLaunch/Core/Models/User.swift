@@ -37,3 +37,11 @@ extension User {
         return fullName.components(separatedBy: " ")[1]
     }
 }
+
+//MARK: - Equatable -
+
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
