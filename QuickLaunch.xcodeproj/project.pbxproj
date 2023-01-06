@@ -23,6 +23,11 @@
 		54A989962924222E00DEF459 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A989952924222E00DEF459 /* SettingsViewController.swift */; };
 		54A9899929243BF600DEF459 /* PersonalInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9899829243BF600DEF459 /* PersonalInfoCell.swift */; };
 		54C2873D2966AB5D00750512 /* StateEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2873C2966AB5D00750512 /* StateEnums.swift */; };
+		54F654D32967F0B2001AB08D /* RMCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F654D22967F0B2001AB08D /* RMCharacterCell.swift */; };
+		54F654D52967F51D001AB08D /* RMCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F654D42967F51D001AB08D /* RMCharacter.swift */; };
+		54F654D72967F648001AB08D /* RMCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F654D62967F648001AB08D /* RMCharacterDTO.swift */; };
+		54F654D92967F6A6001AB08D /* RMCharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F654D82967F6A6001AB08D /* RMCharacterMapper.swift */; };
+		54F654DB2967F7A8001AB08D /* RMCharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F654DA2967F7A8001AB08D /* RMCharacterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		54A989952924222E00DEF459 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		54A9899829243BF600DEF459 /* PersonalInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoCell.swift; sourceTree = "<group>"; };
 		54C2873C2966AB5D00750512 /* StateEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateEnums.swift; sourceTree = "<group>"; };
+		54F654D22967F0B2001AB08D /* RMCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterCell.swift; sourceTree = "<group>"; };
+		54F654D42967F51D001AB08D /* RMCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacter.swift; sourceTree = "<group>"; };
+		54F654D62967F648001AB08D /* RMCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDTO.swift; sourceTree = "<group>"; };
+		54F654D82967F6A6001AB08D /* RMCharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterMapper.swift; sourceTree = "<group>"; };
+		54F654DA2967F7A8001AB08D /* RMCharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				5407195C2966984D00493DBA /* UserService.swift */,
+				54F654DA2967F7A8001AB08D /* RMCharacterService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -70,6 +81,7 @@
 			children = (
 				5407195F29669B2D00493DBA /* UserMapper.swift */,
 				5407196229669B5000493DBA /* MapperProtocol.swift */,
+				54F654D82967F6A6001AB08D /* RMCharacterMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -125,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				548915E4291BA5F400DABF29 /* User.swift */,
+				54F654D42967F51D001AB08D /* RMCharacter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				548915EA291BA86E00DABF29 /* UserDTO.swift */,
+				54F654D62967F648001AB08D /* RMCharacterDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 		54A98990292420B600DEF459 /* Feed Page */ = {
 			isa = PBXGroup;
 			children = (
+				54F654D12967F0A1001AB08D /* Cells */,
 				54A989912924210200DEF459 /* View Controllers */,
 			);
 			path = "Feed Page";
@@ -255,6 +270,14 @@
 				54C2873C2966AB5D00750512 /* StateEnums.swift */,
 			);
 			path = States;
+			sourceTree = "<group>";
+		};
+		54F654D12967F0A1001AB08D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				54F654D22967F0B2001AB08D /* RMCharacterCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,10 +353,13 @@
 				548915F1291BADB000DABF29 /* ChatListCell.swift in Sources */,
 				548F4652291CFAC500A9435E /* UserInfoViewController.swift in Sources */,
 				548F464E291CF2C700A9435E /* ChatPageViewController.swift in Sources */,
+				54F654DB2967F7A8001AB08D /* RMCharacterService.swift in Sources */,
 				5407196029669B2D00493DBA /* UserMapper.swift in Sources */,
 				548915E5291BA5F400DABF29 /* User.swift in Sources */,
 				5407196329669B5000493DBA /* MapperProtocol.swift in Sources */,
 				548915CF291B9C3A00DABF29 /* ChatListViewController.swift in Sources */,
+				54F654D92967F6A6001AB08D /* RMCharacterMapper.swift in Sources */,
+				54F654D52967F51D001AB08D /* RMCharacter.swift in Sources */,
 				548915EB291BA86E00DABF29 /* UserDTO.swift in Sources */,
 				5407195D2966984D00493DBA /* UserService.swift in Sources */,
 				54A989942924212F00DEF459 /* FeedViewController.swift in Sources */,
@@ -341,6 +367,8 @@
 				54A989962924222E00DEF459 /* SettingsViewController.swift in Sources */,
 				54C2873D2966AB5D00750512 /* StateEnums.swift in Sources */,
 				54A9899929243BF600DEF459 /* PersonalInfoCell.swift in Sources */,
+				54F654D72967F648001AB08D /* RMCharacterDTO.swift in Sources */,
+				54F654D32967F0B2001AB08D /* RMCharacterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
