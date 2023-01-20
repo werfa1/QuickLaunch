@@ -17,14 +17,28 @@ final class RMCharacterMapper: MapperProtocol {
     //MARK: - Mapping Method -
     
     func mapToDomainObject(dto: RMCharacterDTO) -> RMCharacter {
-        //let characterLocation = RMLocation(name: dto.location.name, url: dto.location.url)
         return RMCharacter(
             id: dto.id,
             name: dto.name,
-            status: dto.status,
+            status: getStatus(from: dto.status),
             species: dto.species,
             //location: characterLocation,
             imageUrl: dto.image,
             episodes: dto.episode)
+    }
+}
+
+//MARK: - Helpers -
+
+extension RMCharacterMapper {
+    private func getStatus(from string: String) -> RMStatus {
+        switch string {
+        case "Alive":
+            return .alive
+        case "Dead":
+            return .dead
+        default:
+            return .unknown
+        }
     }
 }

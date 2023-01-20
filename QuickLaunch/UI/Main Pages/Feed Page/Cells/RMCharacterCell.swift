@@ -17,7 +17,9 @@ final class RMCharacterCell: UITableViewCell {
     
     private var characterImageView  : UIImageView!
     private var nameLabel           : UILabel!
+    private var statusImageView     : UIImageView!
     private var statusLabel         : UILabel!
+    private var statusStackView     : UIStackView!
     private var locationTitleLabel  : UILabel!
     private var locationLabel       : UILabel!
     private var firstSeenTitleLabel : UILabel!
@@ -29,6 +31,7 @@ final class RMCharacterCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureImageView()
         configureNameLabel()
+        configureStatusStackView()
         selectionStyle = .default
     }
     
@@ -45,6 +48,8 @@ extension RMCharacterCell {
     func setCharacter(_ character: RMCharacter) {
         downloadImage(fromUrl: character.imageUrl)
         nameLabel.text = character.name
+        statusImageView.tintColor = getColor(forStatus: character.status)
+        statusLabel.text = character.status.rawValue + " - " + character.species
     }
 }
 
@@ -52,13 +57,24 @@ extension RMCharacterCell {
 
 extension RMCharacterCell {
     private func downloadImage(fromUrl url: String) {
-        let url = URL(string: url)
+        guard let url = URL(string: url) else { return }
 
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             DispatchQueue.main.async {
                 self.characterImageView.image = UIImage(data: data!)
             }
+        }
+    }
+    
+    private func getColor(forStatus status: RMStatus) -> UIColor {
+        switch status {
+        case .alive:
+            return .systemGreen
+        case .dead:
+            return .systemRed
+        case .unknown:
+            return .systemGray
         }
     }
 }
@@ -80,12 +96,34 @@ extension RMCharacterCell {
     
     private func configureNameLabel() {
         nameLabel = UILabel()
+        nameLabel.font = .boldSystemFont(ofSize: 23)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(nameLabel)
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: Paddings.top),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Paddings.leadings),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Paddings.trailing)
+        ])
+    }
+    
+    private func configureStatusStackView() {
+        statusImageView = UIImageView(image: UIImage(systemName: "circle.fill"))
+        statusImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusImageView.widthAnchor.constraint(equalToConstant: Sizes.statusImageSize),
+            statusImageView.heightAnchor.constraint(equalToConstant: Sizes.statusImageSize)
+        ])
+        statusLabel = UILabel()
+        statusStackView = UIStackView(arrangedSubviews: [statusImageView, statusLabel])
+        statusStackView.axis = .horizontal
+        statusStackView.alignment = .center
+        statusStackView.spacing = 8
+        statusStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(statusStackView)
+        NSLayoutConstraint.activate([
+            statusStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Paddings.leadings),
+            statusStackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Paddings.top),
+            statusStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Paddings.trailing)
         ])
     }
 }
@@ -108,6 +146,8 @@ extension RMCharacterCell {
     private enum Sizes {
         
         /// 150
-        static let imageViewSize : CGFloat = 150
+        static let imageViewSize    : CGFloat = 270
+        
+        static let statusImageSize  : CGFloat = 20
     }
 }

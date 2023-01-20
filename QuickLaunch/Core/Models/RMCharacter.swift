@@ -10,7 +10,7 @@ import Foundation
 struct RMCharacter {
     let id       : Int
     let name     : String
-    let status   : String
+    let status   : RMStatus
     let species  : String
    // let location : RMLocation
     let imageUrl : String
@@ -22,4 +22,10 @@ struct RMCharacter {
 struct RMLocation {
     let name: String
     let url: String
+}
+
+enum RMStatus: String {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknown = "unknown"
 }
