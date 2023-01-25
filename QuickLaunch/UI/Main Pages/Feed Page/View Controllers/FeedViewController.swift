@@ -167,14 +167,6 @@ extension FeedViewController: UITableViewDataSource {
 //MARK: - UITableView Delegate -
 
 extension FeedViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 70
-    }
 }
 
 //MARK: - UI Configuration -
@@ -232,8 +224,8 @@ extension FeedViewController {
     
     private enum Sizes {
         
-        /// 370
-        static let rowHeight  : CGFloat = 370
+        /// 400
+        static let rowHeight  : CGFloat = 400
         
         /// 40
         static let loaderSize : CGFloat = 40

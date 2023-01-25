@@ -201,7 +201,7 @@ extension ChatListViewController: UITableViewDataSource {
 extension ChatListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatPageVC = ChatPageViewController(user: userList[indexPath.row])
-        navigationController?.pushViewController(chatPageVC, animated: true)
+        show(chatPageVC, sender: self)
     }
 }
 

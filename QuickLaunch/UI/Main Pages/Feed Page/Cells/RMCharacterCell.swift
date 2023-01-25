@@ -32,7 +32,7 @@ final class RMCharacterCell: UITableViewCell {
         configureImageView()
         configureNameLabel()
         configureStatusStackView()
-        selectionStyle = .default
+        selectionStyle = .none
     }
     
     @available(*, unavailable)
@@ -40,6 +40,16 @@ final class RMCharacterCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+//MARK: - Lifecycle -
+
+//extension RMCharacterCell {
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+//        bounds = bounds.inset(by: padding)
+//    }
+//}
 
 //MARK: - Internal Functions -
 

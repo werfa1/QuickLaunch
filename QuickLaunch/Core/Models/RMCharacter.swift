@@ -12,7 +12,7 @@ struct RMCharacter {
     let name     : String
     let status   : RMStatus
     let species  : String
-   // let location : RMLocation
+    let location : RMLocation
     let imageUrl : String
     let episodes : [String]
 }
